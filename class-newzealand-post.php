@@ -27,9 +27,9 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 		
 		
 		$this->default_weight = $this->get_option('default_weight');
-		$this->default_width = $this->get_option('default_width');
-		$this->default_length = $this->get_option('default_length');
 		$this->default_thickness = $this->get_option('default_thickness');
+		$this->default_length = $this->get_option('default_length');
+		$this->default_height = $this->get_option('default_height');
 
 		$this->debug_mode = $this->get_option('debug_mode');
 
@@ -79,14 +79,14 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 							'default'           => '0.5',
 							'description'       => __( $weight_unit , 'woocommerce-new-zealand-post-shipping-method' ),
 					),
-					'default_width' => array(
-							'title'             => __( 'Default Package Width', 'woocommerce-new-zealand-post-shipping-method' ),
+					'default_thickness' => array(
+							'title'             => __( 'Default Package Thickness (Width)', 'woocommerce-new-zealand-post-shipping-method' ),
 							'type'              => 'text',
 							'default'           => '5',
 							'description'       => __( $dimensions_unit, 'woocommerce-new-zealand-post-shipping-method' ),
 					),
-					'default_thickness' => array(
-							'title'             => __( 'Default Package Thickness (Height)', 'woocommerce-new-zealand-post-shipping-method' ),
+					'default_height' => array(
+							'title'             => __( 'Default Package Height', 'woocommerce-new-zealand-post-shipping-method' ),
 							'type'              => 'text',
 							'default'           => '5',
 							'description'       => __( $dimensions_unit, 'woocommerce-new-zealand-post-shipping-method' ),
@@ -181,18 +181,18 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 		$weight = 0;
 		$length = 0;
-		$width = 0;
 		$thickness = 0;
+		$height = 0;
 
 		foreach($package_details as  $pack){
 
 			$weight = $pack['weight'];
-			$thickness = $pack['thickness'];
-			$width 	= $pack['width'];
+			$height = $pack['height'];
+			$thickness 	= $pack['thickness'];
 			$length = $pack['length'];
 
 
-			$rates = $this->get_rates($rates, $pack['item_id'], $weight, $thickness, $width, $length, $package['destination']['postcode'] );
+			$rates = $this->get_rates($rates, $pack['item_id'], $weight, $height, $thickness, $length, $package['destination']['postcode'] );
 			
 		}
 		
@@ -208,13 +208,13 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 
 
-	private function get_rates( $old_rates, $item_id, $weight, $thickness, $width, $length, $destination ){
+	private function get_rates( $old_rates, $item_id, $weight, $height, $thickness, $length, $destination ){
 
 		$query_params['from_postcode'] = $this->shop_post_code;
 		$query_params['to_postcode'] = $destination;
 		$query_params['length'] = $length;
-		$query_params['width'] = $width;
 		$query_params['thickness'] = $thickness;
+		$query_params['height'] = $height;
 		$query_params['weight'] = $weight;
 
 		foreach($this->supported_services as $service_key => $service_name):
@@ -232,7 +232,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 					// add the rate if the API request succeeded
 						$rates[$service_key] = array(
 								'id' => $service_key,
-								'label' => 'New Zealand ' . $aus_response->postage_result->service.' ('.$aus_response->postage_result->delivery_time.')', //( '.$service->delivery_time.' )
+								'label' => 'New Zealand Post ' . $aus_response->postage_result->service.' ('.$aus_response->postage_result->delivery_time.')', //( '.$service->delivery_time.' )
 								'cost' =>  ($aus_response->postage_result->total_cost ) + $old_rates[$service_key]['cost'], 
 							
 						);
@@ -253,14 +253,14 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 	 * get_min_dimension function.
 	 * get the minimum dimension of the package, so we multiply it with the quantity
 	 * @access private
-	 * @param number $width
-	 * @param number $length
 	 * @param number $thickness
+	 * @param number $length
+	 * @param number $height
 	 * @return string $result
 	 */
-	private function get_min_dimension($width, $length, $thickness){
+	private function get_min_dimension($thickness, $length, $height){
 
-		$dimensions = array('width'=>$width,'length'=>$length,'thickness'=>$thickness);
+		$dimensions = array('thickness'=>$thickness,'length'=>$length,'height'=>$height);
 		$result = array_keys($dimensions, min($dimensions));
 		return $result[0];
 	}
@@ -290,18 +290,18 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
     		$value  += $values['data']->get_price() * $values['quantity'];
     		
     		$length = woocommerce_get_dimension( ($values['data']->length=='')?$this->default_length:$values['data']->length, 'cm' );
-    		$thickness = woocommerce_get_dimension( ($values['data']->height=='')?$this->default_thickness:$values['data']->height, 'cm' );
-    		$width = woocommerce_get_dimension( ($values['data']->width=='')?$this->default_width:$values['data']->width, 'cm' );
-    		$min_dimension = $this->get_min_dimension( $width, $length, $thickness );
+    		$height = woocommerce_get_dimension( ($values['data']->height=='')?$this->default_height:$values['data']->height, 'cm' );
+    		$thickness = woocommerce_get_dimension( ($values['data']->width=='')?$this->default_thickness:$values['data']->width, 'cm' );
+    		$min_dimension = $this->get_min_dimension( $thickness, $length, $height );
 			$$min_dimension = $$min_dimension * $values['quantity'];
     		$products[] = array('weight'=> woocommerce_get_weight( $values['data']->get_weight(), 'kg' ),
     							'quantity'=> $values['quantity'],
     							'length'=> $length,
+    							'height'=> $height,
     							'thickness'=> $thickness,
-    							'width'=> $width,
     							'item_id'=> $item_id,
     						);
-    		$volume += ( $length * $thickness * $width );
+    		$volume += ( $length * $height * $thickness );
     	}
 
     	$max_weight = $this->get_max_weight($package);
@@ -312,15 +312,15 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 			$packs_count = 1;
 			$pack[$packs_count]['weight'] = 0;
 			$pack[$packs_count]['length'] = 0;
+			$pack[$packs_count]['height'] = 0;
 			$pack[$packs_count]['thickness'] = 0;
-			$pack[$packs_count]['width'] = 0;
 			$pack[$packs_count]['quantity'] = 0;
 			foreach ($products as $product){
 				while ($product['quantity'] != 0) {
 					$pack[$packs_count]['weight'] += $product['weight'];
 					$pack[$packs_count]['length'] = $product['length'];
-					$pack[$packs_count]['thickness'] = $product['thickness'];
-					$pack[$packs_count]['width']  =  $product['width'];
+					$pack[$packs_count]['height'] = $product['height'];
+					$pack[$packs_count]['thickness']  =  $product['thickness'];
 					$pack[$packs_count]['item_id'] =  $product['item_id'];
 					$pack[$packs_count]['quantity'] +=  $product['quantity'];
 					
@@ -331,8 +331,8 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 						$packs_count++;
 						$pack[$packs_count]['weight'] = $product['weight'];
 						$pack[$packs_count]['length'] = $product['length'];
+						$pack[$packs_count]['height'] = $product['height'];
 						$pack[$packs_count]['thickness'] = $product['thickness'];
-						$pack[$packs_count]['width'] = $product['width'];
 						$pack[$packs_count]['item_id'] =  $product['item_id'];
 						$pack[$packs_count]['quantity'] =  $product['quantity'];
 					
