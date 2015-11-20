@@ -1,6 +1,6 @@
 <?php 
 
-class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
+class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 
 
