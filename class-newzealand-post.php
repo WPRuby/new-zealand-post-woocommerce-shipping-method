@@ -4,16 +4,16 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 
 
-	public $postageParcelURL = 'http://auspost.com.au/api/postage/parcel/domestic/calculate.json';
-	public $postage_intl_url = 'https://auspost.com.au/api/postage/parcel/international/service.json';
-	public $api_key = '20b5d076-5948-448f-9be4-f2fd20d4c258';
+	public $postageParcelURL = 'http://api.nzpost.co.nz/ratefinder/rate.json';
+
+	public $api_key = '123'; //demo api key
 	public $supported_services = array( 'AUS_PARCEL_REGULAR' => 'Parcel Post',
 										'AUS_PARCEL_EXPRESS' => 'Express Post');
 	
 	public function __construct(){
-		$this->id = 'auspost';
-		$this->method_title = __('Australian Post','australian-post');
-		$this->title = __('Australian Post','australian-post');
+		$this->id = 'nzpost';
+		$this->method_title = __('New Zealand Post','woocommerce-new-zealand-post-shipping-method');
+		$this->title = __('New Zealand Post','woocommerce-new-zealand-post-shipping-method');
 		
 
 		$this->init_form_fields();
@@ -31,13 +31,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 		$this->default_length = $this->get_option('default_length');
 		$this->default_height = $this->get_option('default_height');
 
-
 		$this->debug_mode = $this->get_option('debug_mode');
-		
-		
-		
-
-
 
 		add_action('woocommerce_update_options_shipping_'.$this->id, array($this, 'process_admin_options'));
 
@@ -57,51 +51,51 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 					'enabled' => array(
 					'title' 		=> __( 'Enable/Disable', 'woocommerce' ),
 					'type' 			=> 'checkbox',
-					'label' 		=> __( 'Enable Australian Post', 'woocommerce' ),
+					'label' 		=> __( 'Enable New Zealand Post', 'woocommerce' ),
 					'default' 		=> 'yes'
 					),
 					'title' => array(
 						'title' 		=> __( 'Method Title', 'woocommerce' ),
 						'type' 			=> 'text',
 						'description' 	=> __( 'This controls the title', 'woocommerce' ),
-						'default'		=> __( 'Australian Post Shipping', 'woocommerce' ),
+						'default'		=> __( 'New Zealand Post Shipping', 'woocommerce' ),
 						'desc_tip'		=> true,
 					),
 					'api_key' => array(
-							'title'             => __( 'API Key', 'australian-post' ),
+							'title'             => __( 'API Key', 'woocommerce-new-zealand-post-shipping-method' ),
 							'type'              => 'text',
-							'description'       => __( 'Get your key from <a target="_blank" href="https://developers.auspost.com.au/apis/pacpcs-registration">https://developers.auspost.com.au/apis/pacpcs-registration</a>', 'australian-post' ),
+							'description'       => __( 'Get your key from <a target="_blank" href="https://www.nzpost.co.nz/business/developer-centre/rate-finder-api/get-a-rate-finder-api-key">https://www.nzpost.co.nz/business/developer-centre/rate-finder-api/get-a-rate-finder-api-key</a>', 'woocommerce-new-zealand-post-shipping-method' ),
 							'default'           => $this->api_key
 					),
 					'shop_post_code' => array(
-							'title'             => __( 'Shop Origin Post Code', 'australian-post' ),
+							'title'             => __( 'Shop Origin Post Code', 'woocommerce-new-zealand-post-shipping-method' ),
 							'type'              => 'text',
-							'description'       => __( 'Enter your Shop postcode.', 'australian-post' ),
+							'description'       => __( 'Enter your Shop postcode.', 'woocommerce-new-zealand-post-shipping-method' ),
 							'default'           => '2000'
 					),
 					'default_weight' => array(
-							'title'             => __( 'Default Package Weight', 'australian-post' ),
+							'title'             => __( 'Default Package Weight', 'woocommerce-new-zealand-post-shipping-method' ),
 							'type'              => 'text',
 							'default'           => '0.5',
-							'description'       => __( $weight_unit , 'australian-post' ),
+							'description'       => __( $weight_unit , 'woocommerce-new-zealand-post-shipping-method' ),
 					),
 					'default_width' => array(
-							'title'             => __( 'Default Package Width', 'australian-post' ),
+							'title'             => __( 'Default Package Width', 'woocommerce-new-zealand-post-shipping-method' ),
 							'type'              => 'text',
 							'default'           => '5',
-							'description'       => __( $dimensions_unit, 'australian-post' ),
+							'description'       => __( $dimensions_unit, 'woocommerce-new-zealand-post-shipping-method' ),
 					),
 					'default_height' => array(
-							'title'             => __( 'Default Package Height', 'australian-post' ),
+							'title'             => __( 'Default Package Height', 'woocommerce-new-zealand-post-shipping-method' ),
 							'type'              => 'text',
 							'default'           => '5',
-							'description'       => __( $dimensions_unit, 'australian-post' ),
+							'description'       => __( $dimensions_unit, 'woocommerce-new-zealand-post-shipping-method' ),
 					),
 					'default_length' => array(
-							'title'             => __( 'Default Package Length', 'australian-post' ),
+							'title'             => __( 'Default Package Length', 'woocommerce-new-zealand-post-shipping-method' ),
 							'type'              => 'text',
 							'default'           => '10',
-							'description'       => __( $dimensions_unit, 'australian-post' ),
+							'description'       => __( $dimensions_unit, 'woocommerce-new-zealand-post-shipping-method' ),
 					),
 					'debug_mode' => array(
 						'title' 		=> __( 'Enable Debug Mode', 'woocommerce' ),
@@ -132,11 +126,11 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 	public function admin_options() {
 
 		?>
-		<h3><?php _e( 'Austrlia Post Settings', 'woocommerce' ); ?></h3>
+		<h3><?php _e( 'New Zealand Post Settings', 'woocommerce' ); ?></h3>
 			<?php if($this->debug_mode == 'yes'): ?>
 
 				<div class="updated woocommerce-message">
-			    	<p><?php _e( 'Austrlia Post debug mode is activated, only administrators can use it.', 'australian-post' ); ?></p>
+			    	<p><?php _e( 'New Zealand Post debug mode is activated, only administrators can use it.', 'woocommerce-new-zealand-post-shipping-method' ); ?></p>
 			    </div>
 			<?php endif; ?>
 			<a href="https://waseem-senjer.com/product/australia-post-woocommerce-extension-pro/" target="_blank">
@@ -156,7 +150,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 				<li><a target="_blank" href="http://auspost.com.au/parcels-mail/size-and-weight-guidelines.html">Weight and Size Guidlines </a>from Australia Post.</li>
 				
 				<li>If you encountered any problem with the plugin, please do not hesitate <a target="_blank" href="http://waseem-senjer.com/submit-ticket/">submitting a support ticket</a>.</li>
-				<li>If you like the plugin please leave me a <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/australian-post-woocommerce-extension?filter=5#postform">★★★★★</a> rating. A huge thank you from me in advance!</li>
+				<li>If you like the plugin please leave me a <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/woocommerce-new-zealand-post-shipping-method-woocommerce-extension?filter=5#postform">★★★★★</a> rating. A huge thank you from me in advance!</li>
 				
 			</ol>
 
@@ -172,7 +166,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 		}
 
 		// The lite version doesn't support international shipping
-		if($package['destination']['country'] != 'AU') return false;
+		if($package['destination']['country'] != 'NZ') return false;
 
 
 		return true;
@@ -199,10 +193,6 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 
 			$rates = $this->get_rates($rates, $pack['item_id'], $weight, $height, $width, $length, $package['destination']['postcode'] );
-			/*if(isset($rates['error'])){
-				wc_add_notice($rates['error'],'error');
-				return;
-			}*/
 			
 		}
 		
@@ -242,7 +232,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 					// add the rate if the API request succeeded
 						$rates[$service_key] = array(
 								'id' => $service_key,
-								'label' => 'Australia ' . $aus_response->postage_result->service.' ('.$aus_response->postage_result->delivery_time.')', //( '.$service->delivery_time.' )
+								'label' => 'New Zealand ' . $aus_response->postage_result->service.' ('.$aus_response->postage_result->delivery_time.')', //( '.$service->delivery_time.' )
 								'cost' =>  ($aus_response->postage_result->total_cost ) + $old_rates[$service_key]['cost'], 
 							
 						);
