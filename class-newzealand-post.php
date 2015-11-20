@@ -140,7 +140,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 			    </div>
 			<?php endif; ?>
 			<a href="https://waseem-senjer.com/product/australia-post-woocommerce-extension-pro/" target="_blank">
-				<img style="z-index:99999; width:200px; position:fixed; bottom:5px; right:5px;" src="<?php echo AUSPOST_URL; ?>pro_version.png">
+				<img style="z-index:99999; width:200px; position:fixed; bottom:5px; right:5px;" src="<?php echo NZPOST_URL; ?>pro_version.png">
 			</a>
 		<table class="form-table">
 		<?php
