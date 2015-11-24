@@ -135,6 +135,9 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 			    	<p><?php _e( 'New Zealand Post debug mode is activated, only administrators can use it.', 'woocommerce-new-zealand-post-shipping-method' ); ?></p>
 			    </div>
 			<?php endif; ?>
+			<a href="https://goo.gl/mkcOsR" target="_blank">
+				<img style="z-index:99999; width:220px; position:fixed; bottom:5px; right:5px;" src="<?php echo NZPOST_URL; ?>pro_version.png">
+			</a>
 		<table class="form-table">
 		<?php
 			// Generate the HTML For the settings form.
