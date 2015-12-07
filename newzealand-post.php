@@ -15,8 +15,7 @@
 
 define('NZPOST_URL', plugin_dir_url(__FILE__));
 
-$active_plugins = apply_filters('active_plugins', get_option('active_plugins'));
-if(in_array('woocommerce/woocommerce.php', $active_plugins)){
+if(nzpost_is_woocommerce_active()){
 
 
 	add_filter('woocommerce_shipping_methods', 'add_new_zealand_post_post_method');
@@ -30,4 +29,13 @@ if(in_array('woocommerce/woocommerce.php', $active_plugins)){
 		require 'class-newzealand-post.php';
 	}
 
+}
+
+function nzpost_is_woocommerce_active(){
+	$active_plugins = (array) get_option( 'active_plugins', array() );
+
+	if ( is_multisite() )
+		$active_plugins = array_merge( $active_plugins, get_site_option( 'active_sitewide_plugins', array() ) );
+	
+	return in_array( 'woocommerce/woocommerce.php', $active_plugins ) || array_key_exists( 'woocommerce/woocommerce.php', $active_plugins );
 }
