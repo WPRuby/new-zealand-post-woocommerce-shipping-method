@@ -47,6 +47,10 @@ WooCommerce New Zealand Post Shipping Method is a Wordpress Plugin that integrat
 = What is API key? =
 This is a key that you must get it from New Zealand so you can use their API, Get your key from https://www.nzpost.co.nz/business/developer-centre/rate-finder-api/get-a-rate-finder-api-key
 
+== Screenshots ==
+
+1. New Zealand Post Shipping Settings Page.
+2. Checkout Page Preview.
 
 
 == Changelog ==
