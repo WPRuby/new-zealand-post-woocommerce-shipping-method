@@ -14,6 +14,18 @@ WooCommerce New Zealand Post Shipping Method is a Wordpress Plugin that integrat
 == Description ==
 WooCommerce New Zealand Post Shipping Method is a Wordpress Plugin that integrate the New Zealand Post service, it will calculate the shipping cost and the delivery time for your customer.
  
+= Pro Features =
+
+* Adding handling fees to every order.
+* Customized Domestic Shipping Options.
+* Customized International Shipping Options.
+* Showing all or the cheapest option to the user.
+* PrePaid New Zealand Bags Support.
+* Lifetime updates
+* 24/7 priority support.
+
+[Upgrade to Pro](https://waseem-senjer.com/product/new-zealand-post-woocommerce-shipping-method/ "Upgrade to New Zealand Post WooCommerce Shipping Pro")
+
 
 == Installation ==
 
