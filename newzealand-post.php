@@ -1,11 +1,11 @@
 <?php
 /* @wordpress-plugin
  * Plugin Name:       WooCommerce New Zealand Post Shipping Method
- * Plugin URI:        https://waseem-senjer.com/
+ * Plugin URI:        https://wpruby.com/plugin/woocommerce-new-zealand-post-shipping-method-pro/
  * Description:       WooCommerce New Zealand Post Shipping Method.
- * Version:           1.0.0
- * Author:            Waseem Senjer
- * Author URI:        https://waseem-senjer.com
+ * Version:           1.0.1
+ * Author:            WPRuby
+ * Author URI:        https://wpruby.com
  * Text Domain:       woocommerce-new-zealand-post-shipping-method
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
