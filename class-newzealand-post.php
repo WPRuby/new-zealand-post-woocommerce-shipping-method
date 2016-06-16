@@ -8,15 +8,19 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 	public $api_key = '123'; //demo api key
 
 
-	public function __construct(){
+	public function __construct( $instance_id = 0 ){
 		$this->id = 'nzpost';
 		$this->method_title = __('New Zealand Post','woocommerce-new-zealand-post-shipping-method');
 		$this->title = __('New Zealand Post','woocommerce-new-zealand-post-shipping-method');
-		
+		$this->instance_id = absint( $instance_id );
 
 		$this->init_form_fields();
 		$this->init_settings();
-
+		$this->supports  = array(
+ 			'shipping-zones',
+ 			'instance-settings',
+ 			'instance-settings-modal',
+ 		);
 
 		$this->enabled = $this->get_option('enabled');
 		$this->title = $this->get_option('title');
@@ -44,14 +48,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 				$dimensions_unit = strtolower( get_option( 'woocommerce_dimension_unit' ) );
 				$weight_unit = strtolower( get_option( 'woocommerce_weight_unit' ) );
 				
-				$this->form_fields = array(
-
-					'enabled' => array(
-					'title' 		=> __( 'Enable/Disable', 'woocommerce' ),
-					'type' 			=> 'checkbox',
-					'label' 		=> __( 'Enable New Zealand Post', 'woocommerce' ),
-					'default' 		=> 'yes'
-					),
+				$this->instance_form_fields = array(
 					'title' => array(
 						'title' 		=> __( 'Method Title', 'woocommerce' ),
 						'type' 			=> 'text',
@@ -106,14 +103,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 						'default' 		=> 'no',
 						'description'	=> __('If debug mode is enabled, the shipping method will be activated just for the administrator.'),
 					),
-
-
-
-
 			 );
-		
-		
-
 	}
 
 	
@@ -138,8 +128,15 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 						    	<p><?php _e( 'New Zealand Post debug mode is activated, only administrators can use it.', 'woocommerce-new-zealand-post-shipping-method' ); ?></p>
 						    </div>
 						<?php endif; ?>
+						<?php if(version_compare(WC()->version, '2.6.0', 'lt')): ?>
+							<div class="error woocommerce-message">
+						    	<p><?php _e( 'This version only supports WooCommerce 2.6+ Please install a lower version or upgrade WooCommerce to 2.6+', 'woocommerce-new-zealand-post-shipping-method' ); ?></p>
+						    </div>
+						<?php endif; ?>
 						<table class="form-table">
-							<?php $this->generate_settings_html();?>
+							<?php 
+								echo $this->get_admin_options_html();
+							?>
 						</table><!--/.form-table-->
 					</div>
 					<div id="postbox-container-1" class="postbox-container">
@@ -237,7 +234,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 	}
 
-	public function calculate_shipping( $package ){
+	public function calculate_shipping( $package = array() ){
 		$package_details  =  $this->get_package_details( $package );
 		$this->rates = array();	
 		
@@ -261,6 +258,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 		
 		if(!empty($rates)){
 			foreach ($rates as $key => $rate) {
+				$rate['package'] = $package;
 				$this->add_rate($rate);
 			}
 		}

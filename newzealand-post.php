@@ -20,12 +20,13 @@ if(nzpost_is_woocommerce_active()){
 
 	add_filter('woocommerce_shipping_methods', 'add_new_zealand_post_post_method');
 	function add_new_zealand_post_post_method( $methods ){
-		$methods[] = 'WC_New_Zealand_Post_Shipping_Method';
+		$methods['nzpost'] = 'WC_New_Zealand_Post_Shipping_Method';
 		return $methods; 
 	}
 
 	add_action('woocommerce_shipping_init', 'init_zealand_post');
 	function init_zealand_post( ){
+
 		require 'class-newzealand-post.php';
 	}
 
