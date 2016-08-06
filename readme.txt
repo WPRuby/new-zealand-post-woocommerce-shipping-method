@@ -3,8 +3,8 @@ Contributors: waseem_senjer,wprubyplugins
 Donate link: https://wpruby.com/plugin/woocommerce-new-zealand-post-shipping-method-pro/
 Tags: woocommerce,shipping, woocommerce extension, new zealand,new zealand post,shipping method
 Requires at least: 3.5.1
-Tested up to: 4.4
-Stable tag: 1.0.1
+Tested up to: 4.5.3
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,10 @@ This is a key that you must get it from New Zealand so you can use their API, Ge
 
 
 == Changelog ==
+
+= 1.1.0 =
+* Supports shipping zones which introduced in WC 2.6.0
+
 
 = 1.0.1 =
 * Re-Branding
