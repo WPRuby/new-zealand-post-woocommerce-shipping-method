@@ -3,7 +3,7 @@ Contributors: waseem_senjer,wprubyplugins
 Donate link: https://wpruby.com/plugin/woocommerce-new-zealand-post-shipping-method-pro/
 Tags: woocommerce,shipping, woocommerce extension, new zealand,new zealand post,shipping method
 Requires at least: 3.5.1
-Tested up to: 4.5.3
+Tested up to: 4.7.5
 Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
