@@ -3,7 +3,7 @@
  * Plugin Name:       WooCommerce New Zealand Post Shipping Method
  * Plugin URI:        https://wpruby.com/plugin/woocommerce-new-zealand-post-shipping-method-pro/
  * Description:       WooCommerce New Zealand Post Shipping Method.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Author:            WPRuby
  * Author URI:        https://wpruby.com
  * Text Domain:       woocommerce-new-zealand-post-shipping-method
@@ -21,7 +21,7 @@ if(nzpost_is_woocommerce_active()){
 	add_filter('woocommerce_shipping_methods', 'add_new_zealand_post_post_method');
 	function add_new_zealand_post_post_method( $methods ){
 		$methods['nzpost'] = 'WC_New_Zealand_Post_Shipping_Method';
-		return $methods; 
+		return $methods;
 	}
 
 	add_action('woocommerce_shipping_init', 'init_zealand_post');
@@ -37,6 +37,6 @@ function nzpost_is_woocommerce_active(){
 
 	if ( is_multisite() )
 		$active_plugins = array_merge( $active_plugins, get_site_option( 'active_sitewide_plugins', array() ) );
-	
+
 	return in_array( 'woocommerce/woocommerce.php', $active_plugins ) || array_key_exists( 'woocommerce/woocommerce.php', $active_plugins );
 }

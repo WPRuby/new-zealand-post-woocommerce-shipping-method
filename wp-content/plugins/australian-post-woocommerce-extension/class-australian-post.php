@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
 
@@ -7,21 +7,20 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
 	public $postageParcelURL = 'https://digitalapi.auspost.com.au/postage/parcel/domestic/calculate.json';
 	public $postage_intl_url = 'https://digitalapi.auspost.com.au/postage/parcel/international/service.json';
 	public $api_key = '20b5d076-5948-448f-9be4-f2fd20d4c258';
-	public $supported_services = array( 
+	public $supported_services = array(
 		'AUS_PARCEL_REGULAR' => 'Parcel Post',
 		'AUS_PARCEL_EXPRESS' => 'Express Post'
 	);
-	
+
 	public function __construct( $instance_id = 0 ){
 		$this->id = 'auspost';
 		$this->instance_id = absint( $instance_id );
 		$this->method_title = __('Australia Post','australian-post');
 		$this->title = __('Australia Post','australian-post');
-		
+
 		$this->supports  = array(
 			'shipping-zones',
 			'instance-settings',
-			'instance-settings-modal',
 		);
 		$this->init_form_fields();
 		$this->init_settings();
@@ -31,8 +30,8 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
 		$this->title = $this->get_option('title');
 		$this->api_key = $this->get_option('api_key');
 		$this->shop_post_code = $this->get_option('shop_post_code');
-		
-		
+
+
 		$this->default_weight = $this->get_option('default_weight');
 		$this->default_width = $this->get_option('default_width');
 		$this->default_length = $this->get_option('default_length');
@@ -41,8 +40,8 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
 
 
 		$this->debug_mode = $this->get_option('debug_mode');
-		
-		
+
+
 		add_action('woocommerce_update_options_shipping_'.$this->id, array($this, 'process_admin_options'));
 
 
@@ -52,10 +51,10 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
 
 
 	public function init_form_fields(){
-		
+
 		$dimensions_unit = strtolower( get_option( 'woocommerce_dimension_unit' ) );
 		$weight_unit = strtolower( get_option( 'woocommerce_weight_unit' ) );
-		
+
 		$this->instance_form_fields = array(
 			'title' => array(
 				'title' 		=> __( 'Method Title', 'woocommerce' ),
@@ -145,8 +144,8 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
 						</table><!--/.form-table-->
 					</div>
 					<div id="postbox-container-1" class="postbox-container">
-	                        <div id="side-sortables" class="meta-box-sortables ui-sortable"> 
-	                            
+	                        <div id="side-sortables" class="meta-box-sortables ui-sortable">
+
 	                            <div class="postbox ">
 	                                <div class="handlediv" title="Click to toggle"><br></div>
 	                                <h3 class="hndle"><span><i class="dashicons dashicons-update"></i>&nbsp;&nbsp;Upgrade to Pro</span></h3>
@@ -162,11 +161,13 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
 	                                            <li>» Extra Cover</li>
 	                                            <li>» Signature On Delivery</li>
 	                                            <li>» Display the Cheapest option</li>
-	                                            <li>» Dropshipping Support</li>
+																							<li>» Dropshipping Support</li>
+																							<li>» Fallback Price <span style="color:red;">(new)</span></li>
+	                                            <li>» Renaming Shipping Options <span style="color:red;">(new)</span></li>
 	                                            <li>» Auto Hassle-Free Updates</li>
 	                                            <li>» High Priority Customer Support</li>
 	                                        </ul>
-											<a href="https://wpruby.com/plugin/australia-post-woocommerce-extension-pro/" class="button wpruby_button" target="_blank"><span class="dashicons dashicons-star-filled"></span> Upgrade Now</a> 
+											<a href="https://wpruby.com/plugin/australia-post-woocommerce-extension-pro/" class="button wpruby_button" target="_blank"><span class="dashicons dashicons-star-filled"></span> Upgrade Now</a>
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -245,7 +246,7 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
 
 	public function calculate_shipping( $package = array() ){
 		$package_details  =  $this->get_package_details( $package );
-		$this->rates = array();	
+		$this->rates = array();
 		// since 1.4.2 enhancing the debug mode.
 		$this->debug('Packing Details: <pre>' . print_r($package_details, true) . '</pre>');
 		$weight = 0;
@@ -262,9 +263,9 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
 
 
 			$rates = $this->get_rates($rates, $pack['item_id'], $weight, $height, $width, $length, $package['destination']['postcode'] );
-			
+
 		}
-		
+
 		if(!empty($rates)){
 			foreach ($rates as $key => $rate) {
 				if(is_array($rate)){
@@ -273,7 +274,7 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
 				$this->add_rate($rate);
 			}
 		}
-		
+
 
 	}
 
@@ -291,19 +292,19 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
 		foreach($this->supported_services as $service_key => $service_name):
 					$query_params['service_code'] = $service_key;
 					$this->debug('Packing Request: <pre>' . print_r($this->postageParcelURL.'?'.http_build_query($query_params), true) . '</pre>');
-					
+
 					$response = wp_remote_get( $this->postageParcelURL.'?'.http_build_query($query_params),array('headers' => array('AUTH-KEY'=> $this->api_key)));
 					// since 1.4.2 enhancing the debug mode.
 					$this->debug('Australia Post RESPONSE: <pre>' . print_r($response, true) . '</pre>');
-					
+
 					if(is_wp_error( $response )){
-						return array('error' => 'Unknown Problem. Please Contact the admin');		
+						return array('error' => 'Unknown Problem. Please Contact the admin');
 					}
 
 					$aus_response = json_decode(wp_remote_retrieve_body($response));
-					
 
-					
+
+
 					if(!isset($aus_response->error) && $aus_response != null){
 						$duration = '';
 						if($this->show_duration === 'yes'){
@@ -312,20 +313,20 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
 
 						$old_rate = (isset($old_rates[$service_key]['cost']))?$old_rates[$service_key]['cost']:0;
 						// add the rate if the API request succeeded
-						
+
 						$rates[$service_key] = array(
 								'id' => $service_key,
 								'label' => $this->title. ' ' . $aus_response->postage_result->service.' ' . $duration,
-								'cost' =>  ($aus_response->postage_result->total_cost ) + $old_rate, 
-							
+								'cost' =>  ($aus_response->postage_result->total_cost ) + $old_rate,
+
 						);
-						 
-					// if the API returned any error, show it to the user	
+
+					// if the API returned any error, show it to the user
 					}else{
 						return array('error' => $aus_response->error->errorMessage);
- 
+
 					}
-					
+
 			endforeach;
 
 			return $rates;
@@ -368,14 +369,14 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
     	// Get weight of order
     	foreach ( $package['contents'] as $item_id => $values ) {
 
-    		$weight += woocommerce_get_weight( (floatval($values['data']->get_weight())<=0  )?$this->default_weight:$values['data']->get_weight(), 'kg' ) * $values['quantity'];
+    		$weight += wc_get_weight( (floatval($values['data']->get_weight())<=0  )?$this->default_weight:$values['data']->get_weight(), 'kg' ) * $values['quantity'];
     		$value  += $values['data']->get_price() * $values['quantity'];
-    		
-    		$length = woocommerce_get_dimension( ($values['data']->length=='')?$this->default_length:$values['data']->length, 'cm' );
-    		$height = woocommerce_get_dimension( ($values['data']->height=='')?$this->default_height:$values['data']->height, 'cm' );
-    		$width = woocommerce_get_dimension( ($values['data']->width=='')?$this->default_width:$values['data']->width, 'cm' );
+
+    		$length = wc_get_dimension( ($values['data']->get_length()=='')?$this->default_length:$values['data']->get_length(), 'cm' );
+    		$height = wc_get_dimension( ($values['data']->get_height()=='')?$this->default_height:$values['data']->get_height(), 'cm' );
+    		$width = wc_get_dimension( ($values['data']->get_width()=='')?$this->default_width:$values['data']->get_width(), 'cm' );
     		$min_dimension = $this->get_min_dimension( $width, $length, $height );
-    		$products[] = array('weight'=> woocommerce_get_weight( (floatval($values['data']->get_weight())<=0  )?$this->default_weight:$values['data']->get_weight(), 'kg' ),
+    		$products[] = array('weight'=> wc_get_weight( (floatval($values['data']->get_weight())<=0  )?$this->default_weight:$values['data']->get_weight(), 'kg' ),
     							'quantity'=> $values['quantity'],
     							'length'=> $length,
     							'height'=> $height,
@@ -386,7 +387,7 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
     	}
 
     	$max_weight = $this->get_max_weight($package);
-    	
+
 	    	$pack = array();
 			$packs_count = 1;
 			$pack[$packs_count]['weight'] = 0;
@@ -412,12 +413,12 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
 						$pack[$packs_count]['height'] =1;// $product['height'];
 						$pack[$packs_count]['width'] =1;// $product['width'];
 						$pack[$packs_count]['item_id'] =  $product['item_id'];
-					
+
 					}
 					$product['quantity']--;
 				}
 			}
-			
+
     	return $pack;
     }
 
@@ -426,7 +427,7 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
     private function get_max_weight( $package){
     	$max = ( $package['destination']['country'] == 'AU' )? 22:20;
     	$store_unit = strtolower( get_option('woocommerce_weight_unit') );
-    	
+
     	if($store_unit == 'kg')
     		return $max;
     	if($store_unit == 'g')
@@ -437,7 +438,7 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
     		return $max * 0.0283495;
 
     	return $max;
-  
+
     }
 
 	/**

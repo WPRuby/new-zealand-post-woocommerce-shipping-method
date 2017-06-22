@@ -3,17 +3,17 @@ Contributors: waseem_senjer,wprubyplugins
 Donate link: https://wpruby.com/plugin/woocommerce-new-zealand-post-shipping-method-pro/
 Tags: woocommerce,shipping, woocommerce extension, new zealand,new zealand post,shipping method
 Requires at least: 3.5.1
-Tested up to: 4.6.1
-Stable tag: 1.1.0
+Tested up to: 4.8
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WooCommerce New Zealand Post Shipping Method is a Wordpress Plugin that integrate the New Zealand Post service, it will calculate the shipping cost and the delivery time for your customer. 
-	
+WooCommerce New Zealand Post Shipping Method is a Wordpress Plugin that integrate the New Zealand Post service, it will calculate the shipping cost and the delivery time for your customer.
+
 
 == Description ==
 WooCommerce New Zealand Post Shipping Method is a Wordpress Plugin that integrate the New Zealand Post service, it will calculate the shipping cost and the delivery time for your customer.
- 
+
 = Pro Features =
 [Upgrade to Pro](https://wpruby.com/plugin/woocommerce-new-zealand-post-shipping-method-pro/ "Upgrade to New Zealand Post WooCommerce Shipping Pro")
 
@@ -66,6 +66,8 @@ This is a key that you must get it from New Zealand so you can use their API, Ge
 
 
 == Changelog ==
+= 1.1.1 =
+* Update plugin assets, Cancel instance model settings.
 
 = 1.1.0 =
 * Supports shipping zones which introduced in WC 2.6.0
@@ -77,5 +79,5 @@ This is a key that you must get it from New Zealand so you can use their API, Ge
 = 1.0.0 =
 * Initial release.
 
-== Upgrade Notice == 
+== Upgrade Notice ==
 * Initial release.

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
@@ -19,15 +19,14 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 		$this->supports  = array(
  			'shipping-zones',
  			'instance-settings',
- 			'instance-settings-modal',
  		);
 
 		$this->enabled = $this->get_option('enabled');
 		$this->title = $this->get_option('title');
 		$this->api_key = $this->get_option('api_key');
 		$this->shop_post_code = $this->get_option('shop_post_code');
-		
-		
+
+
 		$this->default_weight = $this->get_option('default_weight');
 		$this->default_thickness = $this->get_option('default_thickness');
 		$this->default_length = $this->get_option('default_length');
@@ -44,10 +43,10 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 
 	public function init_form_fields(){
-		
+
 				$dimensions_unit = strtolower( get_option( 'woocommerce_dimension_unit' ) );
 				$weight_unit = strtolower( get_option( 'woocommerce_weight_unit' ) );
-				
+
 				$this->instance_form_fields = array(
 					'title' => array(
 						'title' 		=> __( 'Method Title', 'woocommerce' ),
@@ -106,8 +105,8 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 			 );
 	}
 
-	
-	
+
+
 	/**
 	 * Admin Panel Options
 	 * - Options for bits like 'title' and availability on a country-by-country basis
@@ -119,7 +118,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 		?>
 		<h3><?php _e( 'New Zealand Post Settings', 'woocommerce-new-zealand-post-shipping-method' ); ?></h3>
-			
+
 			<div id="poststuff">
 				<div id="post-body" class="metabox-holder columns-2">
 					<div id="post-body-content">
@@ -134,14 +133,14 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 						    </div>
 						<?php endif; ?>
 						<table class="form-table">
-							<?php 
+							<?php
 								echo $this->get_admin_options_html();
 							?>
 						</table><!--/.form-table-->
 					</div>
 					<div id="postbox-container-1" class="postbox-container">
-	                        <div id="side-sortables" class="meta-box-sortables ui-sortable"> 
-	                           
+	                        <div id="side-sortables" class="meta-box-sortables ui-sortable">
+
      							<div class="postbox ">
 	                                <div class="handlediv" title="Click to toggle"><br></div>
 	                                <h3 class="hndle"><span><i class="dashicons dashicons-update"></i>&nbsp;&nbsp;Upgrade to Pro</span></h3>
@@ -156,7 +155,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 	                                            <li>» Auto Hassle-Free Updates</li>
 	                                            <li>» High Priority Customer Support</li>
 	                                        </ul>
-											<a href="https://wpruby.com/plugin/woocommerce-new-zealand-post-shipping-method-pro/" class="button wpruby_button" target="_blank"><span class="dashicons dashicons-star-filled"></span> Upgrade Now</a> 
+											<a href="https://wpruby.com/plugin/woocommerce-new-zealand-post-shipping-method-pro/" class="button wpruby_button" target="_blank"><span class="dashicons dashicons-star-filled"></span> Upgrade Now</a>
 	                                    </div>
 	                                </div>
 	                            </div>
@@ -180,7 +179,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 	                                    </div>
 	                                </div>
 	                            </div>
-	                       
+
 	                            <div class="postbox rss-postbox">
 	    							<div class="handlediv" title="Click to toggle"><br></div>
 	    								<h3 class="hndle"><span><i class="fa fa-wordpress"></i>&nbsp;&nbsp;WPRuby Blog</span></h3>
@@ -230,14 +229,14 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 
 		return true;
-		
+
 
 	}
 
 	public function calculate_shipping( $package = array() ){
 		$package_details  =  $this->get_package_details( $package );
-		$this->rates = array();	
-		
+		$this->rates = array();
+
 
 		$weight = 0;
 		$length = 0;
@@ -253,16 +252,16 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 
 			$rates = $this->get_rates($rates, $pack['item_id'], $weight, $height, $thickness, $length, $package['destination']['postcode'] );
-			
+
 		}
-		
+
 		if(!empty($rates)){
 			foreach ($rates as $key => $rate) {
 				$rate['package'] = $package;
 				$this->add_rate($rate);
 			}
 		}
-		
+
 
 	}
 
@@ -284,7 +283,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 		$response = wp_remote_get( $this->postageParcelURL.'?'.http_build_query($query_params));
 		if(is_wp_error( $response )){
-			return array('error' => 'Unknown Problem. Please Contact the admin');		
+			return array('error' => 'Unknown Problem. Please Contact the admin');
 		}
 		$nz_response = json_decode(wp_remote_retrieve_body($response));
 		if($nz_response->success === true){
@@ -295,12 +294,12 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 					$rates[$product->description] = array(
 						'id' => $product->description,
 						'label' => $this->title . ' ' . $product->service_group_description, //( '.$service->delivery_time.' )
-						'cost' =>  ($product->cost ) + $old_rates[$product->service_group_description]['cost'], 
-					);	
+						'cost' =>  ($product->cost ) + $old_rates[$product->service_group_description]['cost'],
+					);
 				}
 		}else{
 
-		// if the API returned any error, show it to the user	
+		// if the API returned any error, show it to the user
 		}
 		return $rates;
 	}
@@ -345,7 +344,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
     		$weight += woocommerce_get_weight( $values['data']->get_weight(), 'kg' ) * $values['quantity'];
     		$value  += $values['data']->get_price() * $values['quantity'];
-    		
+
     		$length = woocommerce_get_dimension( ($values['data']->length=='')?$this->default_length:$values['data']->length, 'mm' );
     		$height = woocommerce_get_dimension( ($values['data']->height=='')?$this->default_height:$values['data']->height, 'mm' );
     		$thickness = woocommerce_get_dimension( ($values['data']->width=='')?$this->default_thickness:$values['data']->width, 'mm' );
@@ -362,7 +361,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
     	}
 
     	$max_weight = $this->get_max_weight($package);
-    	
+
 	    	$pack = array();
 			$packs_count = 1;
 			$pack[$packs_count]['weight'] = 0;
@@ -378,7 +377,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 					$pack[$packs_count]['thickness']  =  $product['thickness'];
 					$pack[$packs_count]['item_id'] =  $product['item_id'];
 					$pack[$packs_count]['quantity'] +=  $product['quantity'];
-					
+
 
 					if($pack[$packs_count]['weight'] > $max_weight){
 						$pack[$packs_count]['weight'] -=  $product['weight'];
@@ -390,12 +389,12 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 						$pack[$packs_count]['thickness'] = $product['thickness'];
 						$pack[$packs_count]['item_id'] =  $product['item_id'];
 						$pack[$packs_count]['quantity'] =  $product['quantity'];
-					
+
 					}
 					$product['quantity']--;
 				}
 			}
-			
+
     	return $pack;
     }
 
@@ -404,7 +403,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
     private function get_max_weight( $package){
     	$max = ( $package['destination']['country'] == 'NZ' )? 25:20;
     	$store_unit = strtolower( get_option('woocommerce_weight_unit') );
-    	
+
     	if($store_unit == 'kg')
     		return $max;
     	if($store_unit == 'g')
@@ -415,7 +414,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
     		return $max * 0.0283495;
 
     	return $max;
-  
+
     }
 
 

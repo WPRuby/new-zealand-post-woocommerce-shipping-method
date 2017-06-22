@@ -1,23 +1,23 @@
-=== Awesome Support - WordPress Support Plugin ===
+=== Awesome Support - WordPress HelpDesk & Support Plugin ===
 
-Contributors: awesomesupport,julien731,SiamKreative
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KADEESTQ9H3GW
-Tags: support,helpdesk,tickets,ticketing,help,support staff,
-Requires at least: 3.8
+Contributors: awesomesupport,julien731,rwkiii,elindydotcom,SiamKreative
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=TWN9BS3UM93KA
+Tags: help,helpdesk,support,tickets,ticketing,support desk,time tracking,paid support,knowledgebase,faq
+Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 3.3.4
+Stable tag: 4.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The most versatile help desk and support plugin for WordPress. Provide awesome support directly from your WordPress site.
+The most versatile and feature-rich help desk and support plugin for WordPress. Provide awesome support directly from your WordPress site.
 
 == Description ==
 
-Awesome Support is the most versatile support plugin for WordPress. It’s the result of two years of work, research, and improvement. The features are an answer to user requests for a solid, WordPress-based help desk, and that's what makes it the best!
+Awesome Support is the most versatile and feature-rich support plugin for WordPress. It’s the result of three+ years of work, research, and improvement. The features are an answer to user requests for a solid, WordPress-based help desk, and that's what makes it the best!
 
 https://www.youtube.com/watch?v=IdSOWQI3tWU
 
-For support please visit the [official site](http://getawesomesupport.com).
+For premium support please visit the [official site](http://getawesomesupport.com).
 
 = Seamless Integration =
 
@@ -29,42 +29,59 @@ Awesome Support provides an optimized viewing experience for easy reading and na
 
 = Robust Code =
 
-Version 3 of Awesome Support was built with flexibility in mind; the code is clean, well-documented and full of hooks. Customize Awesome Support to do almost anything you want or need.
+Version 4 of Awesome Support was built with flexibility in mind; the code is clean, well-documented and full of hooks. You can easily customize Awesome Support to do almost anything you want or need.
 
-Awesome Support relies on the [Titan Framework](http://www.titanframework.net/) to handle plugin options. This framework is built by expert WordPress developers and well-maintained on GitHub.
+Awesome Support relies on the [Titan Framework](http://www.titanframework.net/) to handle plugin options. This framework is built by expert WordPress developers and is well-maintained on GitHub.
 
 = What does it do? =
 
 Check out the user-friendly features of this awesome plugin:
 
-- **Ticketing**: users can submit tickets from the front-end, and your agents can help them from the WordPress back-end
-- **E-mail notifications**: relevant people are notified of certain actions by e-mail, and all e-mails are customizable
-- **Restricted access**: all correspondence is private between the client and the agents
+- **Ticketing**: users can submit tickets from the front-end, and your agents respond to them from the WordPress back-end
+- **E-mail notifications**: relevant parties are notified of certain actions by e-mail, and all e-mails are customizable. Choose from a selection of six email notifications (new ticket, reply to agent, reply to client etc.)
+- **Restricted access**: all correspondence is private between the client and the agents (unless the PUBLIC TICKETS premium add-on is installed and configured)
 - **File upload**: you control when files can be uploaded, how many files, and how large they are
-- **Multiple products**: provide support for as many products as you want
-- **Multiple deparments**: provide support for multiple departments
-- **Custom fields**: easily set up additional custom fields
+- **Multiple products**: provide support for as many products as you want; synchronize product lists with popular e-commerce platforms such as WooCommerce and Easy Digital Downloads (EDD)
+- **Multiple departments**: provide support for multiple departments
+- **Custom fields**: easily set up additional custom fields on your ticket forms (and our premium Custom Fields add-on offers even more convenience).  Choose from 13 field types.
 - **Terms & conditions**: ask users to agree to your your terms and conditions before they open a ticket
 - **Old tickets**: identify old tickets quickly with tags
-- **Agent Collaboration**: multiple agents can work on the same ticket and tickets can be transferred between agents
+- **Agent Collaboration**: multiple agents can work on the same ticket and tickets can be transferred between agents; assign primary, secondary and tertiary agents to tickets while retaining the flexibility to transfer a ticket to any other agent.
+- **Sorting And Filtering**: includes an amazing flexible sorting, filtering and tagging system for your tickets
+- **Security**: assign just the right capabilities to each of your agents including just the ability to see their own tickets or expand to see everyone's tickets - your choice!
+- **Tracking**: easily track where a ticket originated (support form, email, facebook, phone call etc.)
+- **Prioritze your way**: create your own priority scheme - you don't have to get locked into a 1-5 priority scheme!
+- **Time Tracking**: basic time tracking is included!  Admins can even adjust time and all time changes are logged directly in the ticket. 
+- **Custom status**: sign up for our email newsletter and get our Custom Status plugin for free - unlimited color coded, customized statuses and ticket labels at your fingertips! Combined with priorities and tags you have the ultimate system for categorizing and tracking your tickets!
+- **WordPress UI**: Uses the familiar WordPress administration user interface so there is almost no learning curve!  And, because we respect the WordPress UI standards you can use any 3rd party styling tool to create the look you want (see the screenshots tab for examples)
 
-= Extensions =
+= Premium Extensions =
 
-Awesome Support is already packed with features, but if you want to supercharge your support and make it even MORE awesome, our free and premium add-ons allow you to extend the plugin's functionality even further! All of our add-ons are extremely affordable (they’re a fraction of the cost of a web-based application). To check them out, visit our official site at [getawesomesupport.com](http://getawesomesupport.com?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend).
+Awesome Support is already packed with features; but if you want to supercharge your support and make it even more awesome, our free and premium add-ons allow you to extend the plugin's functionality even further! All of our add-ons are extremely affordable (they’re a fraction of the cost of a web-based application). To check them out, visit our official site at [getawesomesupport.com](http://getawesomesupport.com?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend).
 
 **Popular extensions**
 
-* [E-Mail Piping](http://getawesomesupport.com/addons/email-support/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - reply to tickets by e-mail
-* [WooCommerce](http://getawesomesupport.com/addons/woocommerce/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - the bridge between your WooCommerce store and Awesome Support
-* [Canned Responses](http://getawesomesupport.com/addons/canned-responses/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - create replies to common questions, and access them in one click
-* [Gravity Forms](https://getawesomesupport.com/addons/gravity-forms/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - create custom ticket forms with this popuplar WordPress forms builder
+* [E-Mail Piping](http://getawesomesupport.com/addons/email-support/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - reply to tickets and collaborate on tickets using just e-mail. Includes built-in options to control how to handle unrecognized email addresses, responses to closed tickets and much more!
+* [Custom Fields](https://getawesomesupport.com/addons/custom-fields/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - a visual helper for adding custom fields to your tickets. Add unlimited fields and choose from 13 different field types!
+* [WooCommerce](http://getawesomesupport.com/addons/woocommerce/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - this is must-have bridge between your WooCommerce store and Awesome Support
+* [Canned Responses](http://getawesomesupport.com/addons/canned-responses/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - preconfigure replies to common questions, and access them in one click when replying to a ticket
+* [Gravity Forms](https://getawesomesupport.com/addons/gravity-forms/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - create custom ticket forms with this very popular WordPress forms builder
 * [Private Notes](https://getawesomesupport.com/addons/private-notes/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - insert notes into tickets that only agents and admins can view
 * [FAQs](https://getawesomesupport.com/addons/faq/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - Powerful FAQ management make your agents more productive
 * [Notifications](https://getawesomesupport.com/addons/notifications/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - get notified of important events in slack and via pushbullet. Notify third parties of important ticket events via email.
 * [Custom Status](https://getawesomesupport.com/addons/custom-status/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - create unlimited custom statuses that give you new levels of organization for your tickets
 
-Additional extensions such as Auto Close, Private Credentials, Satisfaction Survey and Guest Tickets bring even more power to Awesome Support.
+Additional extensions such as Reports, Auto Close, Private Credentials, Satisfaction Survey, Public Tickets, Guest Tickets, Smart Agent Auto Assignment, Productivity, EDD, Envato and Filestack bring even more power to Awesome Support.
 
+**Bundles**
+
+Purchase one of our bundles and get up to a 70% discount compared to purchasing individual add-ons.
+
+* [Startup Bundle](https://getawesomesupport.com/addons/startup-bundle/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - A 50% discount on the 5 most common add-ons for unlimited sites
+* [Standard Bundle](https://getawesomesupport.com/addons/standard-bundle/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - A discount of 20%-60% on the 8 most common add-ons (discount level depends on number of site licenses purchased)
+* [Professional Bundle](https://getawesomesupport.com/addons/professional-bundle/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - A discount of 45%-70% on the add-ons most useful for e-commerce sites (discount level depends on number of site licenses purchased)
+* [Enterprise Bundle](https://getawesomesupport.com/addons/enterprise-bundle/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - A discount of 50%-70% on the most common add-ons used in larger businesses.
+* [Agency Bundle](https://getawesomesupport.com/addons/agency-bundle/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend) - A discount of 55%-70% on a bundle of almost all our add-ons.  You get an even bigger discount if you purchase this package without the option for technical support!
 
 = Roadmap =
 
@@ -72,7 +89,7 @@ Want to know what’s next for Awesome Support? [Check out the roadmap](https://
 
 = Translations =
 
-Awesome Support id available in French, Dutch, Hungarian, Italian, Portuguese, Spanish, Swedish, Persian, Dutch and Polish.
+Awesome Support is available in a variety of languages and volunteers and customers are always adding more!
 
 Do you want to translate Awesome Support in your language? [Head over to the POEditor.com Project](https://poeditor.com/join/project/P6HgfPnBt4)!  
 Don't see your language?  Let us know which one you would like and we will add it for you!
@@ -115,6 +132,10 @@ Add those two pages to your menu in order to give your users easy access to thei
 
 == Frequently Asked Questions ==
 
+= Missing tabs or menu options after version 4.0 upgrade =
+
+This happens because new WordPress custom security capabilities were introduced in version 4.0.0 of Awesome Support.  [Read this FAQ on our site to learn how adjust your system for these new security items.] (https://getawesomesupport.com/question/missing-tabs-menu-options-version-4-0-upgrade/)
+
 = I get a blank page after ticket submission =
 
 This is most likely a permalinks issue. What you need to do is log into your WordPress admin, go to *Settings > Permalinks* and hit the *Save* button. You don't actually need to change anything, just hitting *Save* will refresh your permalinks structure, including the new `ticket` post type.
@@ -125,7 +146,7 @@ If you want to delete the plugin and all of its data, you need to go to the *Adv
 
 = Users get "You do not have the capacity to open a new ticket" =
 
-Normally, when a user registers through the plugin, he is given the role *Support User*. [This role has special capabilities](http://codex.wordpress.org/Roles_and_Capabilities).
+Normally, when a user registers through the plugin, he/she is given the role *Support User*. [This role has special capabilities](http://codex.wordpress.org/Roles_and_Capabilities).
 
 If your users get the error message *"You do not have the capacity to open a new ticket"*, it means that they don't have the special capabilities.
 
@@ -172,15 +193,157 @@ There are several factors that can influence e-mail notifications delivery. Plea
 
 == Screenshots ==
 
-1. Agent's view (tickets list)
-2. Agent's view (ticket details)
-3. Agent creates a ticket
-4. Client view (tickets list)
-5. Client view (ticket details)
-6. Client creates a ticket
-7. Settings page
+1. Agent's view of the tickets list (twenty sixteen theme)
+2. Client view of the tickets list (twenty sixteen theme)
+3. Client view - ticket details (twenty sixteen theme)
+4. Basic settings page without any add-ons
+5. Login and registration screen available as soon as the plugin is activated (twenty sixteen theme)
+6. Login/Registration screen with guest tickets add-on enabled (twenty sixteen theme)
+7. Agent's view when replying to a ticket. Notice the red stripe in the opening post - that header is color coded based on the ticket priority and lets the agent know at a glance that they are working on a high-priority ticket.
+8. A highly minimized view so you can see more areas of a ticket that is available to an agent.  Notice the time tracking area at the bottom and the increased number of metaboxes on the right that provide a ton of additional data and functions.
+9. A very stylized version of the agents ticket list (done with CSS or a 3rd party styling plugin - imagine the possibilities!)
+10. A very stylized version of a ticket - agent view (done with CSS or a 3rd party styling plugin - imagine the possibilities!)
+11. Client view of the tickets list with a random theme pulled from WordPress.org (colormag theme)
+12. Client view of a ticket detail screen using a random theme pulled from WordPress.org (colormag theme)
+13. Settings: Email alerts - setup header and footer
+14. Settings: Email alerts - setup email addresses and templates for outgoing emails (6 templates available including submission confirmation, reply alert to agent, reply alert to client and close alerts and confirmations)
+15. Settings: Color codes for status and styles
+16. Settings: Time-tracking
+17. Settings: File upload
+18. Settings: Advanced Settings
+19. Settings: General
+20. Premium Addon: Report Widgets
+21. Premium Addon: Gravity Forms Bridge - create completely customized ticket forms in Gravity Forms!
+22. Premium Addon: User friendly custom fields
+23. Premium Addon: Notifications
+24. Premium Addon: Notifications - email template
+25. Premium Addon: Automatic Ticket Close - email template
+26. Premium Addon: Custom Status
+27. Premium Addon: Private Credentials help protect your customers confidential information
+28. Premium Addon: Satisfaction Surveys
+29. Premium Addon: Canned Responses List
+30. Premium Addon: Canned Responses - agent view while responding to a ticket
+31. Premium Addon: FAQ List
+32. Premium Addon: FAQ - agent view while responding to a ticket and selecting an FAQ for the ticket response.
 
 == Changelog ==
+
+= 4.0.1 =
+Version 4.0.0 is a MAJOR upgrade.  It is strongly suggested that you test this upgrade in a stage/test environment before applying it to your production site.
+At the very least you should back-up your site before applying this update!
+
+* Forcing a minor update through to force the svn repo to resync properly.
+
+= 4.0.0 =
+* New	
+	* Minimum required version of PHP is now 5.6
+	* Minimum required version of WP is the 4.x line.
+	* Major revamp of sorting and filtering capabilities
+		* More taxonomy fields now work when filtering and sorting
+		* Can enter a ticket number to find a ticket quickly
+		* All other fields can sort or filter
+			* Exception: Product - can only sort on Product not filter (filter will be added in a future version)
+			* Exception: Agent - can only filter on agent; cannot sort by it.
+	* Added a set of fields that will be used for time tracking.
+		* Basic time tracking so agent can set time spent on ticket.
+		* Notes fields
+		* Options to show/not show the fields on the ticket
+		* Options to show/not show the fields in the ticket list on the back end
+		* Options to show the fields disabled on the ticket (used when another plugin is updating the fields)
+	* Added two "Additional Agent" fields.  These agents can be notified of ticket events and can see the tickets in their ticket list.
+		* Limitation: There are no email template tags for additional agents to all emails CCed to the additional agents will still reference the primary agent.
+	* You can now set the number of tickets per page that is shown on the front end.  The default is still 5.  (Some customers had hundreds of tickets for clients based on how they were using the plugin).
+	* Custom fields:
+		* Now have an option to be "backend" only.  (Documentation to be updated after release).
+		* Can now be set as "readonly". (Documentation to be updated after release).
+		* Now have options to control capabilities specific to custom taxonomy fields.
+	* There is now a new explicit field for ticket PRIORITY.  You can configure your own priorities and color code them.  This field is optional and can be turned on for the front-end, back-end or both and can be made mandatory or optional.
+		* If a priority is set and a color is chosen for the priority then the ticket header will change to reflect that color.
+	* There is a new optional CHANNEL field that allows you to select where a help request originated. The drop-down is pre-configured with a number of common channels such as FACEBOOK and EMAIL.  In many instances it will be up to the agent to fill in the field - it is not automatically populated in most cases. But it is automatically populated and set for tickets generated from the standard ticket form, gravity forms and those opened via email.
+	* Added internal fields to store a count of the number of replies on a ticket.  This is going to be useful on reports.
+		* Use the button under the TOOLS->SETTINGS->CLEANUP tab to update the fields on older tickets.
+	* Added a set of fields to store "additional interested parties".  These are simply notational fields that do nothing right now but they set the stage for future alerts and notices.
+	* Save the date the ticket was closed in new metafields.  Before, the date the ticket was closed was not explicitly saved which made it very hard to use the closing date on reports.
+	* New WordPress Capabilities have been added:
+		* view_all_tickets.  This allows non-admin agents to view and update all tickets in the ticket list if the capability is assigned.
+		* view_unassigned_tickets: This allows non-admin agents to view and update unassigned tickets if the capability is assigned.
+		* manage_licenses_for_awesome_support:  This allows the license box to be hidden.  It is now only shown to admin users by default.
+		* administer_awesome_support: Will be used in future versions and add-ons to limit certain things to Awesome Support admins instead of forcing users to log in with full WP Admin capabilities
+		* Other capabilities specifc to the new pre-installed custom taxonomies.
+	* Add new options for specifying the ticket slug (post id, random number, guid are now options.  See TICKETS->Settings->Advanced)
+	* When replying to a ticket you can choose whether to automatically go to the next ticket in the list or the previous ticket in the list (in addition to the prior options of staying in the ticket and going back to the ticket list).
+	* Add ticket id to front end ticket list.
+	* Labels for built-in custom fields can now be retrieved from the OPTIONS array if they exist otherwise default to built-in text values
+	* Add action hooks:
+		* execute_additional_tools to allow add-ons to add their own buttons to the TOOLS->CLEANUP tab.
+		* wpas_show_done_tool_message allow add-ons to show a message after running a tool.
+		* wpas_backend_ticket_stakeholders_before to allow add-ons to access the the stakeholders metabox
+		* wpas_insert_reply_admin_failed to hook into failed replies from the back-end (rare event, should never be needed but added just in case)
+		* wpas_ticket_after_update_admin_success to hook into updates done from the admin screen
+		* wpas_insert_reply_admin_success to hook into replies done from the admin screen
+		* wpas_post_new_ticket_admin to hook into new tickets done from the admin screen
+	* Add filter hooks:
+		* wpas_cf_field_label allows you to change field labels for custom fields
+		* wpas_fe_template_detail_reply_author_avatar allows for the opportunity to change the avatar in the ticket-reply template on the front end
+		* wpas_fe_template_detail_reply_display_name allows for the opportunity to change the display name in the ticket-reply template on the front end
+		* wpas_fe_template_detail_author_avatar allows for the opportunity to change the avatar in the details template on the front end
+		* wpas_fe_template_detail_author_display_name allows for the opportunity to change the display name in the details template on the front end
+	* wpas_dropdown now supports a "multiple" attribute
+	* Politely requests user to rate after 25 closed tickets.
+	
+* Improvements
+	* Action hook wpas_insert_ticket is now passing an additional parameter containing the original data received before any changes.
+	* Cleaned up Custom Post Type definitions for ticket replies, logs and history so that third party tools can more easily identify them. Prior to this change they all appeared with the name "POSTS" to third party tools which wasn't very useful.
+	* Checkbox custom field can now be shown on the TICKET LIST screen on the back end.
+	* Some Internal updates to support the add-on infrastructure for certain add-ons.
+		* Functions in functions-email-notifications.php uses a new hook wpas_add_reply_complete so that email notifications now occur AFTER attachments have been processed
+		* A similar hook was added/modified in functions-post.php for the same reason
+		* Added a couple of functions to get tickets belonging to a particular agent
+		* Added hooks in the ticket details metabox to be able to add content before and after the default ticket content
+		* Added processing code for using an ATTACHMENTS tag in email templates
+		* Adjusted the location where custom fields data is updated in the ticket.  This is an internal change to ensure that certain alerts have access to the information stored in custom fields.
+		* Updated to allow custom fields to show in the user profile (under very limited and narrow circumstances this is ok but not intended for use by outside developers)
+	* Settings screen changes
+		* New tab for Basic Time Tracking fields
+		* New tab for Products configuration
+	Uninstall Routine Updates:
+		* Delete ticket attachment folders on the local drives
+		* Uninstall the new taxonomy fields introduced in this version
+	* Change a callback routine in functions-templating.php to handle classes as well as strings.
+	* Restrict delete_attachments() and set_upload_dir() to Ticket custom post-type only.
+
+* Bugfixes
+	* Cleaned up a few PHP notices
+	* Allow translation of PRODUCT and DEPARTMENT header on ticket list (backend)
+	* The USER PROFILE metabox/widget on the ticket detail page now shows the full count of open/closed tickets with or without filters applied.  It will now always show the real count regardless of the number of tickets listed underneat the summary.
+	* Show more than 10 add-ons in the ADD-ONs screen
+	* Better sychronization between Custom Status and the TICKETS->SETTINGS->STYLE tab.
+		* To make sync work properly you need to first manually make sure that your color settings in the Tickets->Settings->Style tab matches the ones in Custom Status. Once that is done syncing between core the the add-on will work properly.
+		* When the agent selected "Back to List" for their "after reply" action in their personal profile, this action did not work.  Fixed.
+	* Removed the word "PUBLIC" from certain template tags that aren't really public options
+	* Only activate plugin on single site activation.  Network activation on multi-site should do nothing now since there is no specific multisite functionality available.
+	* Removed use of legacy method to check of custom field exists.
+	* Custom fields could not handle multiple checkbox values being stored.
+	* Updated default styles on checkbox and radio button custom fields.
+	* Remove some unused code.
+		* Product Sync Fixes:
+		* Product Sync logic in get_terms was not detecting product taxonomy term id as being synced.
+		* Synced products did not show up in the ticket list product column
+	* Changed the way sync works to make it more real time with EDD and WC
+	* Styling fixes to checkbox and radio button custom fields
+	* Fix to allow custom fields checkbox options to show in ticket list
+	* Fix to show the label for checkbox custom fields on forms
+	* File uploader class was not setting the attachments folder location correctly under certain circumstances.
+	* Added back in the ABOUT menu option - it was remove from prior versions.
+	* BREAKING CHANGE: Change a hook with an incorrect name that was used when defining the Deparment taxonomy.  Any modifications using the old hook name will need to be updated to use the new name.
+	
+* Upgrade Instructions
+	* After installing the new version please go to your TICKETS->SETTINGS tabs and click the SAVE CHANGES button to write the defaults for new options to your database.
+	* If it seems that certain options are missing from your TICKETS menu or your TICKETS->SETTINGS screen then please go to TICKETS->TOOLS->CLEANUP and click the button to re-run the 3.3.4 to 4.0.0 upgrade.  This will add in any missing WordPress security capabilities to your installation.
+	
+* Deprecated or Removed	
+	* PHP 5.2 and PHP 5.3 no longer supported.  Portions of the plugin were not supported by 5.2 for a while now but going forward no testing will be done on PHP 5.2.   The minimum supported PHP version is 5.6.3.
+	* Support for the version 3.x line of WP is being deprecated  - going forward there will be no more testing or support on these versions.
 
 = 3.3.4 - December 27th, 2016 =
 
@@ -605,8 +768,20 @@ There are several factors that can influence e-mail notifications delivery. Plea
 * The Phoenix reborn. An entirely new version of Awesome Support
 
 == Upgrade Notice ==
+Version 4.0.0 is a MAJOR upgrade.  It is strongly suggested that you test this upgrade in a stage/test environment before applying it to your production site.  
+At the very least you should back-up your site before applying this update!
 
-Bugfixes for latest version.
+After upgrading please make sure you install the latest version of add-ons as well - especially the Email Support add-on (Version 5.0.x) and Gravity Forms.
+
+Automatic upgrades to 4.0.0 are only supported from version 3.3.4. If you are running an earlier version in the 3.x line please make sure you upgrade to 3.3.4 FIRST, verify that all your settings are intact and then install version 4.
+Upgrades from the version 2.x and 1.x lines are NOT supported at all.
+
+After upgrading you might notice that menu options under TICKETS are missing or the tabs inside your TICKETS->SETTINGS screen are missing.  If so, please try any or all of the following:
+
+	1. Go to TICKETS->TOOLS->CLEANUP and find the upgrade button and click that to re-run the upgrade.  This will add required WordPress security capabilities back to the system.
+	2. Go to your TICKETS->SETTINGS screen and click the SAVE button.  This adds the default settings that are new for version 4.0 to your installation.
+	3. Deactivate the add-on and re-activate it.  This triggers some housekeeping tasks.
+
 
 == Roadmap ==
 
@@ -618,4 +793,11 @@ Need to extend Awesome Support's features? We have lots of add-ons to help you s
 
 == Team ==
 
-Even though the plugin has been developed and is maintained by the AwesomeSupport development team, we've had help from various developers around the world. You can see all the contributors on the [team page](http://getawesomesupport.com/team/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend). Many thanks to them all!
+Even though the plugin has been developed and is maintained by the Awesome Support development team, we've had help from various developers around the world. You can see all the contributors on the [team page](http://getawesomesupport.com/team/?utm_source=wordpress.org&utm_medium=readme&utm_campaign=Extend). Many thanks to them all!
+
+Our key core developers on the Awesome Support Development Team in the frist quarter of 2017 include:
+
+	- Julien Liabeuf
+	- Robert Kramer
+	- Muhammad Tahir
+	- Nigel Bahadur

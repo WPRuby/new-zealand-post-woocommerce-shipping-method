@@ -3,7 +3,7 @@
  * Plugin Name:       Australia Post WooCommerce Extension
  * Plugin URI:        https://wpruby.com/plugin/australia-post-woocommerce-extension-pro/
  * Description:       WooCommerce Australia Post Shipping Method.
- * Version:           1.5.3
+ * Version:           1.5.5
  * Author:            WPRuby
  * Author URI:        https://wpruby.com
  * Text Domain:       australian-post
@@ -31,7 +31,7 @@ if(auspost_is_woocommerce_active()){
 			}else{
 				$methods['auspost'] = 'WC_Australian_Post_Shipping_Method';
 			}
-			return $methods; 
+			return $methods;
 		}
 
 		add_action('woocommerce_shipping_init', 'init_australian_post');
@@ -49,7 +49,7 @@ function auspost_is_woocommerce_active(){
 
 	if ( is_multisite() )
 		$active_plugins = array_merge( $active_plugins, get_site_option( 'active_sitewide_plugins', array() ) );
-	
+
 	return in_array( 'woocommerce/woocommerce.php', $active_plugins ) || array_key_exists( 'woocommerce/woocommerce.php', $active_plugins );
 }
 
@@ -58,7 +58,7 @@ function auspost_is_auspost_pro_active(){
 
 	if ( is_multisite() )
 		$active_plugins = array_merge( $active_plugins, get_site_option( 'active_sitewide_plugins', array() ) );
-	
+
 	return in_array( 'woocommerce-australia-post-extension-pro/class-australian-post.php', $active_plugins ) || array_key_exists( 'woocommerce-australia-post-extension-pro/class-australian-post.php', $active_plugins );
 }
 
