@@ -162,9 +162,12 @@ class WC_Australian_Post_Shipping_Method extends WC_Shipping_Method{
 	                                            <li>» Signature On Delivery</li>
 	                                            <li>» Display the Cheapest option</li>
 																							<li>» Dropshipping Support</li>
-																							<li>» Fallback Price <span style="color:red;">(new)</span></li>
-	                                            <li>» Renaming Shipping Options <span style="color:red;">(new)</span></li>
-	                                            <li>» Auto Hassle-Free Updates</li>
+																							<li>» Fallback Price</li>
+	                                            <li>» Renaming Shipping Options</li>
+
+																							<li>» Custom Boxes <span style="color:red;">(new)</span></li>
+																							<li>» Australia Post Tracking <span style="color:red;">(new)</span></li>
+																							<li>» Auto Hassle-Free Updates</li>
 	                                            <li>» High Priority Customer Support</li>
 	                                        </ul>
 											<a href="https://wpruby.com/plugin/australia-post-woocommerce-extension-pro/" class="button wpruby_button" target="_blank"><span class="dashicons dashicons-star-filled"></span> Upgrade Now</a>

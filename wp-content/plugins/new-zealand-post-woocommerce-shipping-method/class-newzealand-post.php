@@ -20,7 +20,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
  			'shipping-zones',
  			'instance-settings',
  		);
-
+ 
 		$this->enabled = $this->get_option('enabled');
 		$this->title = $this->get_option('title');
 		$this->api_key = $this->get_option('api_key');

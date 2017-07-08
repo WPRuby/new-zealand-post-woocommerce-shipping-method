@@ -11,7 +11,7 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path:       /languages
  * GitHub Plugin URI: https://github.com/wsenjer/new-zealand-post-woocommerce-shipping-method
- */
+ */ 
 
 define('NZPOST_URL', plugin_dir_url(__FILE__));
 
