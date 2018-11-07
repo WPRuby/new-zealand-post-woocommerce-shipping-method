@@ -36,9 +36,6 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 		add_action('woocommerce_update_options_shipping_'.$this->id, array($this, 'process_admin_options'));
 
-
-
-
 	}
 
 
@@ -242,7 +239,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 		$length = 0;
 		$thickness = 0;
 		$height = 0;
-
+		$rates = [];
 		foreach($package_details as  $pack){
 
 			$weight = $pack['weight'];
@@ -327,7 +324,6 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
      *
      * @access private
      * @param mixed $package
-     * @return void
      */
     private function get_package_details( $package ) {
 	    global $woocommerce;
@@ -341,16 +337,17 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
     	// Get weight of order
     	foreach ( $package['contents'] as $item_id => $values ) {
 
+		    /** @var $_product WC_Product */
+		    $_product = $values['data'];
+    		$weight += wc_get_weight( $_product->get_weight(), 'kg' ) * $values['quantity'];
+    		$value  += $_product->get_price() * $values['quantity'];
 
-    		$weight += woocommerce_get_weight( $values['data']->get_weight(), 'kg' ) * $values['quantity'];
-    		$value  += $values['data']->get_price() * $values['quantity'];
-
-    		$length = woocommerce_get_dimension( ($values['data']->length=='')?$this->default_length:$values['data']->length, 'mm' );
-    		$height = woocommerce_get_dimension( ($values['data']->height=='')?$this->default_height:$values['data']->height, 'mm' );
-    		$thickness = woocommerce_get_dimension( ($values['data']->width=='')?$this->default_thickness:$values['data']->width, 'mm' );
+    		$length = wc_get_dimension( ($_product->get_length()=='')?$this->default_length:$_product->get_length(), 'mm' );
+    		$height = wc_get_dimension( ($_product->get_height()=='')?$this->default_height:$_product->get_height(), 'mm' );
+    		$thickness = wc_get_dimension( ($_product->get_width()=='')?$this->default_thickness:$_product->get_width(), 'mm' );
     		$min_dimension = $this->get_min_dimension( $thickness, $length, $height );
 			$$min_dimension = $$min_dimension * $values['quantity'];
-    		$products[] = array('weight'=> woocommerce_get_weight( $values['data']->get_weight(), 'kg' ),
+    		$products[] = array('weight'=> wc_get_weight( $_product->get_weight(), 'kg' ),
     							'quantity'=> $values['quantity'],
     							'length'=> $length,
     							'height'=> $height,
