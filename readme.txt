@@ -66,7 +66,7 @@ This is a key that you must get it from New Zealand so you can use their API, Ge
 
 
 == Changelog ==
-= 1.1.2 =
+= 1.1.3 =
 * Skip virtual products
 
 = 1.1.2 =
