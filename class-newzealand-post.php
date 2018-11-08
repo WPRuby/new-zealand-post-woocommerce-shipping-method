@@ -339,6 +339,9 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 		    /** @var $_product WC_Product */
 		    $_product = $values['data'];
+		    if ($_product->is_virtual()) {
+			    continue;
+		    }
     		$weight += wc_get_weight( $_product->get_weight(), 'kg' ) * $values['quantity'];
     		$value  += $_product->get_price() * $values['quantity'];
 
