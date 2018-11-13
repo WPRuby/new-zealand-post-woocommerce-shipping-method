@@ -246,9 +246,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 			$height = $pack['height'];
 			$thickness 	= $pack['thickness'];
 			$length = $pack['length'];
-
-
-			$rates = $this->get_rates($rates, $pack['item_id'], $weight, $height, $thickness, $length, $package['destination']['postcode'] );
+			$rates = $this->get_rates($rates, $weight, $height, $thickness, $length, $package['destination']['postcode'] );
 
 		}
 
@@ -265,8 +263,9 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 
 
-	private function get_rates( $old_rates, $item_id, $weight, $height, $thickness, $length, $destination ){
+	private function get_rates( $old_rates, $weight, $height, $thickness, $length, $destination ){
 
+		$rates = array();
 		$query_params['postcode_src'] = $this->shop_post_code;
 		$query_params['postcode_dest'] = $destination;
 		$query_params['length'] = $length;
@@ -288,15 +287,13 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 			foreach($nz_response->products as $product){
 				if($product->packaging != 'postage_only') continue;
 				if($product->service!='COU' && $product->service!='STD') continue;
-					$rates[$product->description] = array(
+                $old_rate = (isset($old_rates[$product->service_group_description]))? $old_rates[$product->service_group_description]['cost'] :0;
+				$rates[$product->description] = array(
 						'id' => $product->description,
 						'label' => $this->title . ' ' . $product->service_group_description, //( '.$service->delivery_time.' )
-						'cost' =>  ($product->cost ) + $old_rates[$product->service_group_description]['cost'],
+						'cost' =>  ($product->cost ) + $old_rate,
 					);
 				}
-		}else{
-
-		// if the API returned any error, show it to the user
 		}
 		return $rates;
 	}
@@ -320,11 +317,14 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 
 	/**
-     * get_package_details function.
-     *
-     * @access private
-     * @param mixed $package
-     */
+	 * get_package_details function.
+	 *
+	 * @access private
+	 *
+	 * @param mixed $package
+	 *
+	 * @return array
+	 */
     private function get_package_details( $package ) {
 	    global $woocommerce;
 
