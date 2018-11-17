@@ -232,6 +232,8 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 	public function calculate_shipping( $package = array() ){
 		$package_details  =  $this->get_package_details( $package );
+
+		$this->debug(print_r($package_details, true));
 		$this->rates = array();
 
 
@@ -260,9 +262,6 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 
 	}
 
-
-
-
 	private function get_rates( $old_rates, $weight, $height, $thickness, $length, $destination ){
 
 		$rates = array();
@@ -282,11 +281,15 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 			return array('error' => 'Unknown Problem. Please Contact the admin');
 		}
 		$nz_response = json_decode(wp_remote_retrieve_body($response));
+
+		$this->debug(print_r($nz_response, true));
+
+
 		if($nz_response->success === true){
 		// add the rate if the API request succeeded
 			foreach($nz_response->products as $product){
 				if($product->packaging != 'postage_only') continue;
-				if($product->service!='COU' && $product->service!='STD') continue;
+				#if($product->service!='COU' && $product->service!='STD') continue;
                 $old_rate = (isset($old_rates[$product->service_group_description]))? $old_rates[$product->service_group_description]['cost'] :0;
 				$rates[$product->description] = array(
 						'id' => $product->description,
@@ -326,7 +329,6 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 	 * @return array
 	 */
     private function get_package_details( $package ) {
-	    global $woocommerce;
 
 	    $parcel   = array();
 	    $requests = array();
@@ -416,6 +418,19 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
     	return $max;
 
     }
+
+	/**
+	 * Output a message
+	 *
+	 * @param $message
+	 * @param string $type
+	 */
+	private function debug($message, $type = 'notice')
+	{
+		if ($this->debug_mode == 'yes' && current_user_can('manage_options')) {
+			wc_add_notice(sprintf('<pre>%s</pre>', $message), $type);
+		}
+	}
 
 
 }
