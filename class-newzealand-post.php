@@ -20,7 +20,7 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
  			'shipping-zones',
  			'instance-settings',
  		);
- 
+
 		$this->enabled = $this->get_option('enabled');
 		$this->title = $this->get_option('title');
 		$this->api_key = $this->get_option('api_key');
@@ -138,48 +138,9 @@ class WC_New_Zealand_Post_Shipping_Method extends WC_Shipping_Method{
 					<div id="postbox-container-1" class="postbox-container">
 	                        <div id="side-sortables" class="meta-box-sortables ui-sortable">
 
-     							<div class="postbox ">
-	                                <div class="handlediv" title="Click to toggle"><br></div>
-	                                <h3 class="hndle"><span><i class="dashicons dashicons-update"></i>&nbsp;&nbsp;Upgrade to Pro</span></h3>
-	                                <div class="inside">
-	                                    <div class="support-widget">
-	                                        <ul>
-	                                            <li>» International Shipping</li>
-	                                            <li>» Extra Domestic Options</li>
-	                                            <li>» Prepaid Bags Support</li>
-	                                            <li>» Dropshipping Support</li>
-	                                            <li>» Handling Fees Support</li>
-	                                            <li>» Auto Hassle-Free Updates</li>
-	                                            <li>» High Priority Customer Support</li>
-	                                        </ul>
-											<a href="https://wpruby.com/plugin/woocommerce-new-zealand-post-shipping-method-pro/" class="button wpruby_button" target="_blank"><span class="dashicons dashicons-star-filled"></span> Upgrade Now</a>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                            <div class="postbox ">
-	                                <div class="handlediv" title="Click to toggle"><br></div>
-	                                <h3 class="hndle"><span><i class="dashicons dashicons-editor-help"></i>&nbsp;&nbsp;Plugin Support</span></h3>
-	                                <div class="inside">
-	                                    <div class="support-widget">
-	                                        <p>
-	                                        <img style="width: 70%;margin: 0 auto;position: relative;display: inherit;" src="https://wpruby.com/wp-content/uploads/2016/03/wpruby_logo_with_ruby_color-300x88.png">
-	                                        <br/>
-	                                        Got a Question, Idea, Problem or Praise?</p>
-	                                        <ul>
-												<li>» <a target="_blank" href="https://www.nzpost.co.nz/tools/rate-finder/sending-nz">Weight and Size Guidlines </a>on New Zealand Post website.</li>
-												<li>» Please leave us a <a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/new-zealand-post-woocommerce-shipping-method?filter=5">★★★★★</a> rating.</li>
-	                                            <li>» <a href="https://wpruby.com/submit-ticket/" target="_blank">Support Request</a></li>
-	                                            <li>» <a href="https://wpruby.com/knowledgebase_category/woocommerce-new-zealand-post-shipping-method-pro/" target="_blank">Documentation and Common issues.</a></li>
-	                                            <li>» <a href="https://wpruby.com/plugins/" target="_blank">Our Plugins Shop</a></li>
-	                                        </ul>
-
-	                                    </div>
-	                                </div>
-	                            </div>
-
 	                            <div class="postbox rss-postbox">
-	    							<div class="handlediv" title="Click to toggle"><br></div>
 	    								<h3 class="hndle"><span><i class="fa fa-wordpress"></i>&nbsp;&nbsp;WPRuby Blog</span></h3>
+                                    <hr>
 	    								<div class="inside">
 											<div class="rss-widget">
 												<?php

@@ -3,7 +3,9 @@
  * Plugin Name:       WooCommerce New Zealand Post Shipping Method
  * Plugin URI:        https://wpruby.com/plugin/woocommerce-new-zealand-post-shipping-method-pro/
  * Description:       WooCommerce New Zealand Post Shipping Method.
- * Version:           1.1.5
+ * Version:           1.1.6
+ * WC requires at least: 2.6
+ * WC tested up to: 3.5
  * Author:            WPRuby
  * Author URI:        https://wpruby.com
  * Text Domain:       woocommerce-new-zealand-post-shipping-method
@@ -11,7 +13,7 @@
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path:       /languages
  * GitHub Plugin URI: https://github.com/wsenjer/new-zealand-post-woocommerce-shipping-method
- */ 
+ */
 
 define('NZPOST_URL', plugin_dir_url(__FILE__));
 
